@@ -1,0 +1,13 @@
+[Unit]
+Description=Packet Filtering Framework
+DefaultDependencies=no
+After=systemd-sysctl.service
+Before=sysinit.target
+[Service]
+Type=oneshot
+ExecStart=/etc/iptables/iptables-start.sh
+ExecReload=/etc/iptables/iptables-start.sh
+ExecStop=/etc/iptables/flush-iptables.sh
+RemainAfterExit=yes
+[Install]
+WantedBy=multi-user.target
